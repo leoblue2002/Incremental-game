@@ -1,0 +1,14 @@
+﻿<Properties StartupConfiguration="{F3DCB4FA-CB43-B114-FF42-ACD539710151}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/mousedrag.cs">
+    <Files>
+      <File FileName="Assets/Scripts/mousedrag.cs" Line="21" Column="37" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
