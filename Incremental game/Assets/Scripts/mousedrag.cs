@@ -19,8 +19,12 @@ public class mousedrag : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        selected = true;  
+        if (!Input.GetMouseButton(0))
+        {
+            selected = true;
+        }
     }
+
 
     private void OnMouseExit()
     {
@@ -37,8 +41,6 @@ public class mousedrag : MonoBehaviour
         if (Input.GetMouseButton(0) && selected)
         {
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            Debug.Log("mousePosition" + mousePosition);
-            Debug.Log("transform" + transform.position);
             direction = (mousePosition - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
             letgo = false;
