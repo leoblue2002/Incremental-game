@@ -8,8 +8,10 @@ public class mousedrag : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 direction;
     public float movespeed = 100f;
-    private bool selected = false;
-    private bool letgo = true;
+
+    public bool selected = false;
+    public bool letgo = true;
+    public bool exited = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,15 +23,26 @@ public class mousedrag : MonoBehaviour
     {
         if (!Input.GetMouseButton(0))
         {
-            selected = true;
+            this.selected = true;
         }
+        exited = false;
     }
 
 
     private void OnMouseExit()
     {
-        if (letgo)
+        if (!Input.GetMouseButton(0))
         {
+            this.selected = false;
+        }
+        exited = true;
+    }
+
+    private void OnMouseUp()
+    {
+        if (exited)
+        {
+            letgo = true;
             selected = false;
         }
     }
@@ -43,11 +56,6 @@ public class mousedrag : MonoBehaviour
             direction = (mousePosition - transform.position).normalized;
             rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
             letgo = false;
-        }
-
-        if (Input.GetMouseButtonUp(0))
-        {
-            letgo = true;
         }
     }
 }
