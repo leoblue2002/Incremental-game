@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 8159132192683325614}
   - component: {fileID: 8159132192683325613}
   - component: {fileID: 8159132192683325612}
-  - component: {fileID: 6684405963969218991}
+  - component: {fileID: 8644446106798777924}
   m_Layer: 0
   m_Name: block
   m_TagString: Untagged
@@ -186,7 +186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8159132192683325611}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.24, y: -2.38, z: -0.0047898814}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3534508858755528381}
@@ -275,11 +275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72d975a8ff6d7413fa36c500c5d54430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movespeed: 100
+  movespeed: 75
   selected: 0
   letgo: 1
   exited: 1
---- !u!114 &6684405963969218991
+--- !u!114 &8644446106798777924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,8 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ea6f5d961b341cea47364c612425fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 0
   IsGround: 0
   IsNotGround: 0
   IsPlatform: 0
-  IsConnectedToGround: 0
-  IsConnectedToPlatform: 0

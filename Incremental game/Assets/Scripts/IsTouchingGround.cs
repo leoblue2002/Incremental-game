@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class IsTouchingGround : MonoBehaviour
 {
+    public int Level = 0;
     public bool IsGround = false;
     public bool IsNotGround = false;
     public bool IsPlatform = false;
-    public bool IsConnectedToGround = false;
-    public bool IsConnectedToPlatform = false;
-    private bool IsActive = false;
-    private bool UggGround = false;
-    private bool UggPlatform = false;
+
+    private bool IsConnectedToGround = false;
+    private bool IsConnectedToPlatform = false;
+    private bool Ismakingmoney = false;
+    private bool WasActiveLastFrame = false;
+    private bool StoreIsConnectedToGround = false;
+    private bool StoreIsConnectedToPlatform = false;
     private bool replace = false;
+    private GameObject Moneymanager;
+    private moneymanager themanager;
 
-
-    void start ()
+    void Start ()
     {
         if (this.IsGround)
         { this.IsConnectedToGround = true; }
         if (this.IsPlatform)
         { this.IsConnectedToPlatform = true; }
-
+        Moneymanager = GameObject.FindWithTag("MoneyManager");
+        themanager = Moneymanager.GetComponent<moneymanager>();
     }
     
     private void OnCollisionStay2D(Collision2D collision)
@@ -29,17 +34,17 @@ public class IsTouchingGround : MonoBehaviour
         if (!this.IsGround && !this.IsNotGround)
         {
             IsTouchingGround other = collision.gameObject.GetComponent<IsTouchingGround>();
-            if (other.IsGround || other.IsConnectedToGround)
+            if (other.IsGround || other.GetIsConnectedToGround())
             { this.IsConnectedToGround = true; }
 
-            if (other.IsPlatform || other.IsConnectedToPlatform)
+            if (other.IsPlatform || other.GetIsConnectedToPlatform())
             { this.IsConnectedToPlatform = true; }
 
             if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
-            { this.IsActive = true; }
+            { this.Ismakingmoney = true; }
 
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.IsActive);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.IsActive);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
 
            // Debug.Log(this.name + "just entered");
         }
@@ -51,17 +56,16 @@ public class IsTouchingGround : MonoBehaviour
 
         if (!this.IsGround && !this.IsNotGround)
         {
-            Debug.Log("collision exit happened!");
-            if (newthing.IsGround || newthing.IsConnectedToGround)
-            { this.UggGround = false; }
+            if (newthing.IsGround || newthing.GetIsConnectedToGround())
+            { this.StoreIsConnectedToGround = false; }
 
-            if (newthing.IsPlatform || newthing.IsConnectedToPlatform)
-            { this.UggPlatform = false; }
+            if (newthing.IsPlatform || newthing.GetIsConnectedToPlatform())
+            { this.StoreIsConnectedToPlatform = false; }
 
             this.replace = true;
 
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.IsActive);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.IsActive);
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
            // Debug.Log(this.name + "just exited");
         }
         
@@ -71,14 +75,28 @@ public class IsTouchingGround : MonoBehaviour
     {
         if (replace)
         {
-            this.IsConnectedToGround = UggGround;
-            this.IsConnectedToPlatform = UggPlatform;
-            this.IsActive = false;
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.IsActive);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.IsActive);
+            this.IsConnectedToGround = StoreIsConnectedToGround;
+            this.IsConnectedToPlatform = StoreIsConnectedToPlatform;
+            this.Ismakingmoney = false;
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
 
         }
         replace = false;
+        // send active
+        if (Ismakingmoney != WasActiveLastFrame)
+        {
+            // send the +1 or the -1
+            if (Ismakingmoney)
+            {
+                themanager.MakingMoneyBoxes[Level] += 1;
+            }
+            else
+            {
+                themanager.MakingMoneyBoxes[Level] -= 1;
+            }
+            WasActiveLastFrame = Ismakingmoney;
+        }
     }
 
     bool GetIsConnectedToPlatform ()

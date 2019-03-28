@@ -6,14 +6,15 @@ public class moneymanager : MonoBehaviour
 {
     public int Money;
     public int MoneyPerSecond;
-    public int ActiveLvl1s;
-    public int ActiveLvl2s;
-    public int ActiveLvl3s
+    public int[] MakingMoneyBoxes;
 
+    private int[] Mpsofboxes;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("AddMoney", 1, 1);
+        MakingMoneyBoxes = new int[2] ;
+        Mpsofboxes = new int [2] {1, 10};
     }
 
     void AddMoney ()
@@ -24,6 +25,10 @@ public class moneymanager : MonoBehaviour
 
     void CalculateMoneyPerSecond ()
     {
-        MoneyPerSecond = 1 * ActiveLvl1s + 10 * ActiveLvl2s;
+        MoneyPerSecond = 0;
+        for (int i = 0; i < MakingMoneyBoxes.Length; i++)
+        {
+            MoneyPerSecond += MakingMoneyBoxes[i] * Mpsofboxes[i];
+        }
     }
 }
