@@ -370,6 +370,75 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &172118389
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3214657729960975832, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_Name
+      value: Level 1 block Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3214657729960975836, guid: c6aa75f350f2a3141889df96b5355318,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c6aa75f350f2a3141889df96b5355318, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,6 +801,7 @@ MonoBehaviour:
   Money: 0
   MoneyPerSecond: 0
   MakingMoneyBoxes: 
+  CostOfBoxes: 
 --- !u!1 &766543075
 GameObject:
   m_ObjectHideFlags: 0
@@ -931,7 +1001,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy lvl 3 block $1000
+  m_Text: 'Buy lvl 3 block $2000
+
+'
 --- !u!222 &845728007
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1341,7 +1413,7 @@ GameObject:
   - component: {fileID: 1198678362}
   - component: {fileID: 1198678361}
   m_Layer: 5
-  m_Name: buy lvl 2
+  m_Name: buy lvl 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1406,7 +1478,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1198678362}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110102604}
+        m_MethodName: spawnblock
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1198678362
@@ -1524,7 +1607,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1342613049}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110102604}
+        m_MethodName: spawnblock
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1342613049
@@ -1765,7 +1859,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1633462906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110102604}
+        m_MethodName: spawnblock
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1633462906
@@ -2136,6 +2241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lid: {fileID: 622520328}
+  spawners:
+  - {fileID: 4743679977567796577, guid: f0965509dc59faa4fa934f7d6777d4eb, type: 3}
+  - {fileID: 2458816646124008176, guid: 13768181b358746b2a20585eda5eeec9, type: 3}
+  - {fileID: 3924720690247605108, guid: 2aa7136d26c584af5997bcfe2284e3ea, type: 3}
 --- !u!4 &2110102605
 Transform:
   m_ObjectHideFlags: 0

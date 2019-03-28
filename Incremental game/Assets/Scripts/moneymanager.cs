@@ -9,12 +9,14 @@ public class moneymanager : MonoBehaviour
     public int[] MakingMoneyBoxes;
 
     private int[] Mpsofboxes;
+    public int[] CostOfBoxes;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("AddMoney", 1, 1);
-        MakingMoneyBoxes = new int[2] ;
-        Mpsofboxes = new int [2] {1, 10};
+        MakingMoneyBoxes = new int[3] ;
+        Mpsofboxes = new int [3] {1, 15, 225};
+        CostOfBoxes = new int[3] { 20, 200, 2000 };
     }
 
     void AddMoney ()
@@ -30,5 +32,15 @@ public class moneymanager : MonoBehaviour
         {
             MoneyPerSecond += MakingMoneyBoxes[i] * Mpsofboxes[i];
         }
+    }
+
+    public void RemoveMoney (int amount)
+    {
+        Money -= amount;
+    }
+
+    public bool CanAfford (int level)
+    {
+        return Money >= CostOfBoxes[level];
     }
 }
