@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class moneymanager : MonoBehaviour
 {
@@ -8,14 +9,18 @@ public class moneymanager : MonoBehaviour
     public int MoneyPerSecond;
     public int[] MakingMoneyBoxes;
 
-    private int[] Mpsofboxes;
+    public int[] Mpsofboxes;
     public int[] CostOfBoxes;
+
+
+    public Text MoneyDisplay;
+    public Text MpsDisplay;
     // Start is called before the first frame update
     void Start()
     {
         InvokeRepeating("AddMoney", 1, 1);
         MakingMoneyBoxes = new int[3] ;
-        Mpsofboxes = new int [3] {1, 15, 225};
+        Mpsofboxes = new int [3] {1, 11, 121};
         CostOfBoxes = new int[3] { 20, 200, 2000 };
     }
 
@@ -23,6 +28,7 @@ public class moneymanager : MonoBehaviour
     {
         CalculateMoneyPerSecond();
         Money += MoneyPerSecond;
+        UpdateDisplays();
     }
 
     void CalculateMoneyPerSecond ()
@@ -32,6 +38,12 @@ public class moneymanager : MonoBehaviour
         {
             MoneyPerSecond += MakingMoneyBoxes[i] * Mpsofboxes[i];
         }
+    }
+
+    public void UpdateDisplays ()
+    {
+        MoneyDisplay.text = "Money: " + Money;
+        MpsDisplay.text = "MPS: " + MoneyPerSecond;
     }
 
     public void RemoveMoney (int amount)
