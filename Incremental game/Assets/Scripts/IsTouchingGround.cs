@@ -9,12 +9,13 @@ public class IsTouchingGround : MonoBehaviour
     public bool IsNotGround = false;
     public bool IsPlatform = false;
 
-    private bool IsConnectedToGround = false;
-    private bool IsConnectedToPlatform = false;
-    private bool Ismakingmoney = false;
+    public bool IsConnectedToGround = false;
+    public bool IsConnectedToPlatform = false;
+    public bool Ismakingmoney = false;
     private bool WasActiveLastFrame = false;
     private bool StoreIsConnectedToGround = false;
     private bool StoreIsConnectedToPlatform = false;
+    private bool StoreIsMakingMoney = false;
     private bool replace = false;
     private GameObject Moneymanager;
     private moneymanager themanager;
@@ -28,7 +29,21 @@ public class IsTouchingGround : MonoBehaviour
         Moneymanager = GameObject.FindWithTag("MoneyManager");
         themanager = Moneymanager.GetComponent<moneymanager>();
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!this.IsGround && !this.IsNotGround)
+        {
+            IsTouchingGround other = collision.gameObject.GetComponent<IsTouchingGround>();
+            if (other.IsGround || other.GetIsConnectedToGround())
+            { this.StoreIsConnectedToGround = true; }
+
+            if (other.IsPlatform || other.GetIsConnectedToPlatform())
+            { this.StoreIsConnectedToPlatform = true; }
+            this.replace = true;
+        }
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!this.IsGround && !this.IsNotGround)
@@ -43,10 +58,6 @@ public class IsTouchingGround : MonoBehaviour
             if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
             { this.Ismakingmoney = true; }
 
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
-
-           // Debug.Log(this.name + "just entered");
         }
     }
 
@@ -61,12 +72,7 @@ public class IsTouchingGround : MonoBehaviour
 
             if (newthing.IsPlatform || newthing.GetIsConnectedToPlatform())
             { this.StoreIsConnectedToPlatform = false; }
-
             this.replace = true;
-
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
-           // Debug.Log(this.name + "just exited");
         }
         
     }
@@ -77,12 +83,16 @@ public class IsTouchingGround : MonoBehaviour
         {
             this.IsConnectedToGround = StoreIsConnectedToGround;
             this.IsConnectedToPlatform = StoreIsConnectedToPlatform;
-            this.Ismakingmoney = false;
-            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
-            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
-
         }
         replace = false;
+
+        if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
+        { this.Ismakingmoney = true; }
+        else 
+        { this.Ismakingmoney = false; }
+        this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
+        this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
+
         // send active
         if (Ismakingmoney != WasActiveLastFrame)
         {
