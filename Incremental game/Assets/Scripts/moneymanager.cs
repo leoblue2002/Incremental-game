@@ -57,4 +57,14 @@ public class moneymanager : MonoBehaviour
     {
         return Money >= CostOfBoxes[level];
     }
+
+    public bool NoActiveBoxes ()
+    {
+        foreach (int t in MakingMoneyBoxes)
+        {
+            if (t != 0)
+            { return false; }
+        }
+        return true;
+    }
 }
