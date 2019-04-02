@@ -5,8 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - MoneyManager
-  - Canvas
   - TheCanvas
+  - Block
   layers:
   - Default
   - TransparentFX

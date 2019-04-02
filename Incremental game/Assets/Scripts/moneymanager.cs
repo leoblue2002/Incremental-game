@@ -12,16 +12,18 @@ public class moneymanager : MonoBehaviour
     public int[] Mpsofboxes;
     public int[] CostOfBoxes;
 
+    private int[] StartingCostOfBoxes;
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("AddMoney", 1, 1);
+        InvokeRepeating("AddMoney", 0, 1);
         MakingMoneyBoxes = new int[3] ;
         Mpsofboxes = new int [3] {1, 11, 121};
         CostOfBoxes = new int[3] { 20, 200, 2000 };
+        StartingCostOfBoxes = CostOfBoxes;
     }
 
     void AddMoney ()

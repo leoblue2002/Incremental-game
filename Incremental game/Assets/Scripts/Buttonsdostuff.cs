@@ -6,22 +6,26 @@ public class Buttonsdostuff : MonoBehaviour
 {
     private bool togglehelper = false;
     public GameObject lid;
+    public GameObject UiThing;
+    public GameObject StuckUi;
     public GameObject[] spawners = new GameObject[3];
-    private GameObject anoying;
-    private moneymanager moneym;
+
+    private GameObject MoneyManagerObject;
+    private moneymanager MoneyManagerRef;
+    
 
     private void Start()
     {
-       anoying = GameObject.FindWithTag("MoneyManager");
-       moneym = anoying.GetComponent<moneymanager>();
+       MoneyManagerObject = GameObject.FindWithTag("MoneyManager");
+       MoneyManagerRef = MoneyManagerObject.GetComponent<moneymanager>();
     }
 
     public void spawnblock (int level)
     {
-        if (moneym.CanAfford(level))
+        if (MoneyManagerRef.CanAfford(level))
         {
             Instantiate(spawners[level]);
-            moneym.RemoveMoney(moneym.CostOfBoxes[level]);
+            MoneyManagerRef.RemoveMoney(MoneyManagerRef.CostOfBoxes[level]);
         }
     }
 
@@ -31,6 +35,35 @@ public class Buttonsdostuff : MonoBehaviour
         togglehelper = !togglehelper;
     }
 
-    
+    public void ActivateKillMenue (bool yeah)
+    {
+        UiThing.SetActive(yeah);
+    }
 
+    public void KillEverything (string tag)
+    {
+        GameObject[] foundobjects = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject target in foundobjects)
+        {
+            GameObject.Destroy(target);
+        }
+        for (int i = 0; i < MoneyManagerRef.MakingMoneyBoxes.Length; i++)
+        {
+            MoneyManagerRef.MakingMoneyBoxes[i] = 0;
+        }
+    }
+
+    public void StuckDetection ()
+    {
+        if (MoneyManagerRef.Money < MoneyManagerRef.CostOfBoxes[0])
+        {
+            StuckUi.SetActive(true);
+        }
+    }
+
+    public void Freebie ()
+    {
+        Instantiate(spawners[0]);
+        StuckUi.SetActive(false);
+    }
 }

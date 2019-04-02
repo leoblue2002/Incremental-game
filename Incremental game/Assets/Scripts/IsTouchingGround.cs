@@ -9,16 +9,15 @@ public class IsTouchingGround : MonoBehaviour
     public bool IsNotGround = false;
     public bool IsPlatform = false;
 
-    public bool IsConnectedToGround = false;
-    public bool IsConnectedToPlatform = false;
-    public bool Ismakingmoney = false;
-    private bool WasActiveLastFrame = false;
+    private bool IsConnectedToGround = false;
+    private bool IsConnectedToPlatform = false;
+    private bool IsMakingMoney = false;
+    private bool WasMakingMoneyLastFrame = false;
     private bool StoreIsConnectedToGround = false;
     private bool StoreIsConnectedToPlatform = false;
-    private bool StoreIsMakingMoney = false;
-    private bool replace = false;
-    private GameObject Moneymanager;
-    private moneymanager themanager;
+    private bool Replace = false;
+    private GameObject MoneyManagerObject;
+    private moneymanager MoneyManagerScriptRefrence;
 
     void Start ()
     {
@@ -26,10 +25,10 @@ public class IsTouchingGround : MonoBehaviour
         { this.IsConnectedToGround = true; }
         if (this.IsPlatform)
         { this.IsConnectedToPlatform = true; }
-        Moneymanager = GameObject.FindWithTag("MoneyManager");
-        themanager = Moneymanager.GetComponent<moneymanager>();
+        MoneyManagerObject = GameObject.FindWithTag("MoneyManager");
+        MoneyManagerScriptRefrence = MoneyManagerObject.GetComponent<moneymanager>();
     }
-
+        //this fixes the problem where if an object collides with the platform then the ground it stays active
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!this.IsGround && !this.IsNotGround)
@@ -40,10 +39,10 @@ public class IsTouchingGround : MonoBehaviour
 
             if (other.IsPlatform || other.GetIsConnectedToPlatform())
             { this.StoreIsConnectedToPlatform = true; }
-            this.replace = true;
+            this.Replace = true;
         }
     }
-
+        //this solves some issues where objects would be in collision with the platform but not active
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (!this.IsGround && !this.IsNotGround)
@@ -55,16 +54,12 @@ public class IsTouchingGround : MonoBehaviour
             if (other.IsPlatform || other.GetIsConnectedToPlatform())
             { this.IsConnectedToPlatform = true; }
 
-            if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
-            { this.Ismakingmoney = true; }
-
         }
     }
-
+        //this disconects the object from the ground
     private void OnCollisionExit2D(Collision2D collision)
     {
         IsTouchingGround newthing = collision.gameObject.GetComponent<IsTouchingGround>();
-
         if (!this.IsGround && !this.IsNotGround)
         {
             if (newthing.IsGround || newthing.GetIsConnectedToGround())
@@ -72,40 +67,42 @@ public class IsTouchingGround : MonoBehaviour
 
             if (newthing.IsPlatform || newthing.GetIsConnectedToPlatform())
             { this.StoreIsConnectedToPlatform = false; }
-            this.replace = true;
+            this.Replace = true;
         }
-        
     }
 
-    void LateUpdate ()
+    private void LateUpdate ()
     {
-        if (replace)
+            //this is used because sometimes oncollisionstay overwrites oncollisionexit/enter
+        if (Replace)
         {
             this.IsConnectedToGround = StoreIsConnectedToGround;
             this.IsConnectedToPlatform = StoreIsConnectedToPlatform;
         }
-        replace = false;
-
-        if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
-        { this.Ismakingmoney = true; }
-        else 
-        { this.Ismakingmoney = false; }
-        this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.Ismakingmoney);
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(this.Ismakingmoney);
-
-        // send active
-        if (Ismakingmoney != WasActiveLastFrame)
+        Replace = false;
+            //Determine weather or not the object should be making money
+        if (!this.IsNotGround && !this.IsGround)
         {
-            // send the +1 or the -1
-            if (Ismakingmoney)
+            if (!this.IsConnectedToGround && this.IsConnectedToPlatform)
+            { this.IsMakingMoney = true; }
+            else
+            { this.IsMakingMoney = false; }
+            this.gameObject.transform.GetChild(1).gameObject.SetActive(!this.IsMakingMoney);
+            this.gameObject.transform.GetChild(0).gameObject.SetActive(this.IsMakingMoney);
+        }
+
+            // Update Global Money Manager
+        if (IsMakingMoney != WasMakingMoneyLastFrame)
+        {
+            if (IsMakingMoney)
             {
-                themanager.MakingMoneyBoxes[Level] += 1;
+                MoneyManagerScriptRefrence.MakingMoneyBoxes[Level] += 1;
             }
             else
             {
-                themanager.MakingMoneyBoxes[Level] -= 1;
+                MoneyManagerScriptRefrence.MakingMoneyBoxes[Level] -= 1;
             }
-            WasActiveLastFrame = Ismakingmoney;
+            WasMakingMoneyLastFrame = IsMakingMoney;
         }
     }
 

@@ -28,7 +28,6 @@ public class mousedrag : MonoBehaviour
         exited = false;
     }
 
-
     private void OnMouseExit()
     {
         if (!Input.GetMouseButton(0))
@@ -47,7 +46,6 @@ public class mousedrag : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButton(0) && selected)
@@ -57,5 +55,7 @@ public class mousedrag : MonoBehaviour
             rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
             letgo = false;
         }
+
+
     }
 }
