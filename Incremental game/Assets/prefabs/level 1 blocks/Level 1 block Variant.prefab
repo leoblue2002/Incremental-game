@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.875, y: 1.875}
+    oldSize: {x: 4.6875, y: 4.6875}
     newSize: {x: 1.875, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -43,15 +43,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 1 block Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 96714ef3b0adb4f4c9a70fd7bfc6a7cb,
+        type: 3}
+    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.34
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.65
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
@@ -97,27 +118,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 96714ef3b0adb4f4c9a70fd7bfc6a7cb,
-        type: 3}
-    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 1.875
-      objectReference: {fileID: 0}
-    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 1.875
-      objectReference: {fileID: 0}
-    - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325613, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
