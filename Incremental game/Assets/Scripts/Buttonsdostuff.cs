@@ -45,7 +45,7 @@ public class Buttonsdostuff : MonoBehaviour
         GameObject[] foundobjects = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject target in foundobjects)
         {
-            GameObject.Destroy(target);
+            Destroy(target);
         }
         for (int i = 0; i < MoneyManagerRef.MakingMoneyBoxes.Length; i++)
         {
@@ -65,5 +65,10 @@ public class Buttonsdostuff : MonoBehaviour
     {
         Instantiate(spawners[0]);
         StuckUi.SetActive(false);
+    }
+
+    public void CamraMover (float newposition)
+    {
+
     }
 }
