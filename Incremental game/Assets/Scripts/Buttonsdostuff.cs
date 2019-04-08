@@ -9,6 +9,7 @@ public class Buttonsdostuff : MonoBehaviour
     public GameObject UiThing;
     public GameObject StuckUi;
     public GameObject[] spawners = new GameObject[3];
+    public GameObject[] PlatformUpgrades = new GameObject[1];
 
     private GameObject MoneyManagerObject;
     private moneymanager MoneyManagerRef;
@@ -67,8 +68,12 @@ public class Buttonsdostuff : MonoBehaviour
         StuckUi.SetActive(false);
     }
 
-    public void CamraMover (float newposition)
+    public void PlatformUpgrader (int level)
     {
-
+        if (MoneyManagerRef.EnoughCash(MoneyManagerRef.PlatformUpgradeCosts[level]))
+        {
+            PlatformUpgrades[level].SetActive(true);
+            MoneyManagerRef.RemoveMoney(MoneyManagerRef.PlatformUpgradeCosts[level]);
+        }
     }
 }

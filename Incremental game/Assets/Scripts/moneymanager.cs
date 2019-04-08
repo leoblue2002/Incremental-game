@@ -11,6 +11,7 @@ public class moneymanager : MonoBehaviour
 
     public int[] Mpsofboxes;
     public int[] CostOfBoxes;
+    public int[] PlatformUpgradeCosts;
 
     private int[] StartingCostOfBoxes;
 
@@ -22,7 +23,8 @@ public class moneymanager : MonoBehaviour
         InvokeRepeating("AddMoney", 0, 1);
         MakingMoneyBoxes = new int[3] ;
         Mpsofboxes = new int [3] {1, 11, 121};
-        CostOfBoxes = new int[3] { 20, 200, 2000 };
+        CostOfBoxes = new int [3] { 20, 200, 2000 };
+        PlatformUpgradeCosts = new int[1] { 10000 };
         StartingCostOfBoxes = CostOfBoxes;
     }
 
@@ -56,6 +58,11 @@ public class moneymanager : MonoBehaviour
     public bool CanAfford (int level)
     {
         return Money >= CostOfBoxes[level];
+    }
+
+    public bool EnoughCash (int cash)
+    {
+        return Money >= cash;
     }
 
     public bool NoActiveBoxes ()

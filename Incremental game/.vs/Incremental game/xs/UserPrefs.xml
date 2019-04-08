@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{F3DCB4FA-CB43-B114-FF42-ACD539710151}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Buttonsdostuff.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/CamraSlider.cs">
     <Files>
       <File FileName="Assets/Scripts/mousedrag.cs" Line="11" Column="35" />
       <File FileName="Assets/Scripts/IsTouchingGround.cs" Line="33" Column="6" />
@@ -7,7 +7,8 @@
       <File FileName="Assets/Scripts/spawner scripts/lvl1spawner.cs" Line="7" Column="5" />
       <File FileName="Assets/Scripts/spawner scripts/lvl2spawner.cs" Line="12" Column="31" />
       <File FileName="Assets/Scripts/spawner scripts/lvl3spawner.cs" Line="11" Column="33" />
-      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="70" Column="16" />
+      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="48" Column="29" />
+      <File FileName="Assets/Scripts/CamraSlider.cs" Line="17" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

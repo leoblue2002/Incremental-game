@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Buttonsdostuff.cs" />
+    <Compile Include="Assets\Scripts\CamraSlider.cs" />
     <Compile Include="Assets\Scripts\IsTouchingGround.cs" />
     <Compile Include="Assets\Scripts\killcoliding.cs" />
     <Compile Include="Assets\Scripts\moneymanager.cs" />
