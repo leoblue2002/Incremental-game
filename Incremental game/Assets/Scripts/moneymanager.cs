@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class moneymanager : MonoBehaviour
 {
-    public int Money;
-    public int MoneyPerSecond;
-    public int[] MakingMoneyBoxes;
+    public decimal Money;
+    public decimal MoneyPerSecond;
+    public int[] MakingMoneyBoxes = new int[3];
 
-    public int[] Mpsofboxes;
-    public int[] CostOfBoxes;
-    public int[] PlatformUpgradeCosts;
+    public int[] Mpsofboxes = new int[3];
+    public int[] CostOfBoxes = new int[3];
+    public int[] PlatformUpgradeCosts = new int[1];
 
     private int[] StartingCostOfBoxes;
 
@@ -21,10 +21,6 @@ public class moneymanager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("AddMoney", 0, 1);
-        MakingMoneyBoxes = new int[3] ;
-        Mpsofboxes = new int [3] {1, 11, 121};
-        CostOfBoxes = new int [3] { 20, 200, 2000 };
-        PlatformUpgradeCosts = new int[1] { 10000 };
         StartingCostOfBoxes = CostOfBoxes;
     }
 

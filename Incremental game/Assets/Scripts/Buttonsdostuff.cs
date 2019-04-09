@@ -76,4 +76,5 @@ public class Buttonsdostuff : MonoBehaviour
             MoneyManagerRef.RemoveMoney(MoneyManagerRef.PlatformUpgradeCosts[level]);
         }
     }
+
 }
