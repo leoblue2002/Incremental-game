@@ -1693,12 +1693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202317c96825a4dd0ad04438c67eba9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Money: 0
-  MoneyPerSecond: 0
   MakingMoneyBoxes: 00000000000000000000000000000000
   Mpsofboxes: 010000000b00000079000000c3592901
   CostOfBoxes: 14000000c8000000d007000000c2eb0b
-  PlatformUpgradeCosts: 00000000
+  PlatformUpgradeCosts: 10270000
   MoneyDisplay: {fileID: 914187487}
   MpsDisplay: {fileID: 947036580}
 --- !u!1 &745290887
@@ -2386,7 +2384,7 @@ PrefabInstance:
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
@@ -2403,6 +2401,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325613, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0268fea11f5a044de822db14cf85a481, type: 3}
 --- !u!1 &969001762
@@ -2415,7 +2418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 969001763}
   m_Layer: 5
-  m_Name: Block Purchaseing buttons
+  m_Name: Block buy buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2457,7 +2460,7 @@ GameObject:
   - component: {fileID: 971070584}
   - component: {fileID: 971070583}
   m_Layer: 5
-  m_Name: buy Upgrades
+  m_Name: Upgrade Menue Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3413,7 +3416,7 @@ GameObject:
   - component: {fileID: 1270955591}
   - component: {fileID: 1270955590}
   m_Layer: 5
-  m_Name: buy block menu
+  m_Name: Block Menue open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4194,7 +4197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492842969
 GameObject:

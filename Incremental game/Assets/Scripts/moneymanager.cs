@@ -13,6 +13,8 @@ public class moneymanager : MonoBehaviour
     public int[] CostOfBoxes = new int[3];
     public int[] PlatformUpgradeCosts = new int[1];
 
+    private string[] BigNumberNames;
+
     private int[] StartingCostOfBoxes;
 
     public Text MoneyDisplay;
@@ -22,6 +24,9 @@ public class moneymanager : MonoBehaviour
     {
         InvokeRepeating("AddMoney", 0, 1);
         StartingCostOfBoxes = CostOfBoxes;
+        BigNumberNames = new string[12] 
+        { "empty", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion",
+         "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion" };
     }
 
     void AddMoney ()
@@ -40,9 +45,37 @@ public class moneymanager : MonoBehaviour
         }
     }
 
+    public int HowDeep (decimal Monay)
+    {
+        for (int i = 0; i < 12; i++)
+        {
+            int max = 999;
+            if (Monay < max)
+            {
+                return i;
+            }
+            else
+            {
+                max *= 1000;
+            }
+        }
+        return 0;
+    }
+
+    public decimal Exponent (decimal basenum, int exponent)
+    {
+        for (int i = 1; i < exponent; i++)
+            basenum *= basenum;
+        return basenum;
+    }
+
     public void UpdateDisplays ()
     {
-        MoneyDisplay.text = "Money: " + Money;
+
+        int ahhh = HowDeep(Money);
+
+        MoneyDisplay.text = "Money: " + (Money / Exponent(1000,ahhh)) + BigNumberNames[ahhh];
+       
         MpsDisplay.text = "MPS: " + MoneyPerSecond;
     }
 

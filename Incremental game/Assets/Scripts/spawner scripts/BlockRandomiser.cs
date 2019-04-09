@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class lvl1spawner : MonoBehaviour
+public class BlockRandomiser : MonoBehaviour
 {
     public GameObject[] boxes = new GameObject[2];
 
