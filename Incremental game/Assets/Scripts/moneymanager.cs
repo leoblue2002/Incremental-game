@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class moneymanager : MonoBehaviour
 {
+    public int CheatingMoney;
     public decimal Money;
     public decimal MoneyPerSecond;
     public int[] MakingMoneyBoxes = new int[3];
@@ -25,7 +26,7 @@ public class moneymanager : MonoBehaviour
         InvokeRepeating("AddMoney", 0, 1);
         StartingCostOfBoxes = CostOfBoxes;
         BigNumberNames = new string[12] 
-        { "empty", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion",
+        { "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion",
          "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion" };
     }
 
@@ -33,6 +34,11 @@ public class moneymanager : MonoBehaviour
     {
         CalculateMoneyPerSecond();
         Money += MoneyPerSecond;
+        if (CheatingMoney != 0)
+        {
+            Money = CheatingMoney;
+            CheatingMoney = 0;
+        }
         UpdateDisplays();
     }
 
@@ -44,12 +50,12 @@ public class moneymanager : MonoBehaviour
             MoneyPerSecond += MakingMoneyBoxes[i] * Mpsofboxes[i];
         }
     }
-
-    public int HowDeep (decimal Monay)
+        //figures out what big number should be used to describe the money
+    public int HowBigNumber (decimal Monay)
     {
-        for (int i = 0; i < 12; i++)
+        decimal max = 999.999999M;
+        for (int i = 0; i < 10; i++)
         {
-            int max = 999;
             if (Monay < max)
             {
                 return i;
@@ -62,21 +68,34 @@ public class moneymanager : MonoBehaviour
         return 0;
     }
 
-    public decimal Exponent (decimal basenum, int exponent)
-    {
-        for (int i = 1; i < exponent; i++)
-            basenum *= basenum;
-        return basenum;
-    }
-
     public void UpdateDisplays ()
     {
+        MoneyDisplay.text = "Money:_" + FormatNumbers(Money);
+        MpsDisplay.text = "Money Per Second:_" + FormatNumbers(MoneyPerSecond);
+    }
 
-        int ahhh = HowDeep(Money);
+    private string FormatNumbers (decimal input)
+    {
+        int HowBig = HowBigNumber(input);
+        string moneyout;
+        moneyout = (input / (decimal)Mathf.Pow(1000, HowBig)) + "";
 
-        MoneyDisplay.text = "Money: " + (Money / Exponent(1000,ahhh)) + BigNumberNames[ahhh];
-       
-        MpsDisplay.text = "MPS: " + MoneyPerSecond;
+        if (moneyout.IndexOf('.') == -1)
+        {
+            moneyout += ".00";
+        }
+        else
+        {
+            moneyout = moneyout.Substring(0, moneyout.IndexOf('.') + 3);
+        }
+
+        while (moneyout.Length != 6)
+        {
+            moneyout = "_" + moneyout;
+        }
+
+        moneyout = moneyout + "_" + BigNumberNames[HowBig];
+        return moneyout;
     }
 
     public void RemoveMoney (int amount)

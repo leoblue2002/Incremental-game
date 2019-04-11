@@ -5,9 +5,15 @@ using UnityEngine;
 public class Buttonsdostuff : MonoBehaviour
 {
     private bool togglehelper = false;
+    private bool togglehelper2 = false;
+    private bool togglehelper3 = false;
+
     public GameObject lid;
     public GameObject UiThing;
     public GameObject StuckUi;
+    public GameObject BuyBlocksMenue;
+    public GameObject BuyUpgradesMenue;
+
     public GameObject[] spawners = new GameObject[3];
     public GameObject[] PlatformUpgrades = new GameObject[1];
 
@@ -77,4 +83,15 @@ public class Buttonsdostuff : MonoBehaviour
         }
     }
 
+    public void ToggleBlockBuy ()
+    {
+        BuyBlocksMenue.SetActive(togglehelper2);
+        togglehelper2 = !togglehelper2;
+    }
+
+    public void ToggleUpgradeBuy ()
+    {
+        BuyUpgradesMenue.SetActive(togglehelper3);
+        togglehelper3 = !togglehelper3;
+    }
 }
