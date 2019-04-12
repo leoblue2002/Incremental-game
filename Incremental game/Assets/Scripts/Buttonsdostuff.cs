@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buttonsdostuff : MonoBehaviour
 {
@@ -16,6 +18,7 @@ public class Buttonsdostuff : MonoBehaviour
 
     public GameObject[] spawners = new GameObject[3];
     public GameObject[] PlatformUpgrades = new GameObject[1];
+    public Text[] ButtonLabels = new Text[4];
 
     private GameObject MoneyManagerObject;
     private moneymanager MoneyManagerRef;
@@ -33,6 +36,8 @@ public class Buttonsdostuff : MonoBehaviour
         {
             Instantiate(spawners[level]);
             MoneyManagerRef.RemoveMoney((int)MoneyManagerRef.CostOfBoxes[level]);
+            MoneyManagerRef.IncreaseBoxCosts(level);
+            updatebuttonlabesl();
         }
     }
 
@@ -57,6 +62,17 @@ public class Buttonsdostuff : MonoBehaviour
         for (int i = 0; i < MoneyManagerRef.MakingMoneyBoxes.Length; i++)
         {
             MoneyManagerRef.MakingMoneyBoxes[i] = 0;
+        }
+        Array.Copy(MoneyManagerRef.StartingCostOfBoxes, MoneyManagerRef.CostOfBoxes, MoneyManagerRef.CostOfBoxes.Length);
+        updatebuttonlabesl();
+
+    }
+
+    public void updatebuttonlabesl ()
+    {
+        for (int i = 0; i < ButtonLabels.Length; i++)
+        {
+            ButtonLabels[i].text = "lvl" + (i+1) + ": $" + MoneyManagerRef.CostOfBoxes[i];
         }
     }
 

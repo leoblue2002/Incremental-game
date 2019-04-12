@@ -17,7 +17,7 @@ public class moneymanager : MonoBehaviour
 
     private string[] BigNumberNames;
 
-    private Decimal[] StartingCostOfBoxes = new Decimal[4];
+    public Decimal[] StartingCostOfBoxes = new Decimal[4];
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
