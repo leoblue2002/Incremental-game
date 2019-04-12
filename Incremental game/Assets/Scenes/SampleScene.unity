@@ -1696,7 +1696,6 @@ MonoBehaviour:
   CheatingMoney: 0
   MakingMoneyBoxes: 00000000000000000000000000000000
   Mpsofboxes: 010000000b00000079000000c3592901
-  CostOfBoxes: 14000000c8000000d007000000c2eb0b
   PlatformUpgradeCosts: 10270000
   MoneyDisplay: {fileID: 914187487}
   MpsDisplay: {fileID: 947036580}
@@ -1980,7 +1979,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy lvl 3 block $2000
+  m_Text: 'lvl 3 block: $2000
 
 '
 --- !u!222 &845728007
@@ -2061,7 +2060,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy lvl 1 block $20
+  m_Text: 'lvl 1 block: $20'
 --- !u!222 &869865822
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2219,7 +2218,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Buy lvl 2 block $200
+  m_Text: 'lvl 2 block: $200'
 --- !u!222 &941188476
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4415,7 +4414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Buy lvl 8 block $200000000
+  m_Text: 'lvl 8 block $200000000
 
 '
 --- !u!222 &1613654730

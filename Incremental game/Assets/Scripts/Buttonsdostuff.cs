@@ -32,7 +32,7 @@ public class Buttonsdostuff : MonoBehaviour
         if (MoneyManagerRef.CanAfford(level))
         {
             Instantiate(spawners[level]);
-            MoneyManagerRef.RemoveMoney(MoneyManagerRef.CostOfBoxes[level]);
+            MoneyManagerRef.RemoveMoney((int)MoneyManagerRef.CostOfBoxes[level]);
         }
     }
 

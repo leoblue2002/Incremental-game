@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,12 +12,12 @@ public class moneymanager : MonoBehaviour
     public int[] MakingMoneyBoxes = new int[3];
 
     public int[] Mpsofboxes = new int[3];
-    public int[] CostOfBoxes = new int[3];
+    public Decimal[] CostOfBoxes;
     public int[] PlatformUpgradeCosts = new int[1];
 
     private string[] BigNumberNames;
 
-    private int[] StartingCostOfBoxes;
+    private Decimal[] StartingCostOfBoxes = new Decimal[4];
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
@@ -24,10 +25,11 @@ public class moneymanager : MonoBehaviour
     void Start()
     {
         InvokeRepeating("AddMoney", 0, 1);
-        StartingCostOfBoxes = CostOfBoxes;
         BigNumberNames = new string[12] 
         { "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion",
          "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion" };
+        CostOfBoxes = new Decimal[4] {20, 200, 2000, 200000000 };
+        Array.Copy(CostOfBoxes, StartingCostOfBoxes, CostOfBoxes.Length);
     }
 
     void AddMoney ()
@@ -53,7 +55,7 @@ public class moneymanager : MonoBehaviour
         //figures out what big number should be used to describe the money
     public int HowBigNumber (decimal Monay)
     {
-        decimal max = 999.999999M;
+        decimal max = 999.999999999999999999M;
         for (int i = 0; i < 10; i++)
         {
             if (Monay < max)
@@ -121,5 +123,11 @@ public class moneymanager : MonoBehaviour
             { return false; }
         }
         return true;
+    }
+
+    public void IncreaseBoxCosts (int level)
+    {
+        decimal increaseby = 1.05M;
+        CostOfBoxes[level] = CostOfBoxes[level] * increaseby;
     }
 }
