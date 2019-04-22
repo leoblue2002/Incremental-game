@@ -33,6 +33,7 @@ public class Buttonsdostuff : MonoBehaviour
         MoneyManagerObject = GameObject.FindWithTag("MoneyManager");
         MoneyManagerRef = MoneyManagerObject.GetComponent<moneymanager>();
         SpawnLocationRef = SpawnLocation.GetComponent<SpaceIsClear>();
+        updatebuttonlabesl();
     }
 
     public void spawnblock (int level)
@@ -124,10 +125,25 @@ public class Buttonsdostuff : MonoBehaviour
         }
     }
 
+    private int CheapestLevel ()
+    {
+        decimal biggest = Decimal.MaxValue;
+        int output = 0;
+        for (int i = 0; i > MoneyManagerRef.CostOfBoxes.Length; i++)
+        {
+            if (MoneyManagerRef.CostOfBoxes[i] > biggest)
+            {
+                biggest = MoneyManagerRef.CostOfBoxes[i];
+                output = i;
+            }
+        }
+        return output;
+    }
+
     public void Freebie ()
     {
-        Instantiate(spawners[0]);
-        MoneyManagerRef.OwnedBoxes[0] += 1;
+        Instantiate(spawners[CheapestLevel()]);
+        MoneyManagerRef.OwnedBoxes[CheapestLevel()] += 1;
         StuckUi.SetActive(false);
     }
 

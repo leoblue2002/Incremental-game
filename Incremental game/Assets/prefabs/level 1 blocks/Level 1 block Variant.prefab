@@ -17,7 +17,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.6875, y: 4.6875}
+    oldSize: {x: 1.6216216, y: 1.6216216}
     newSize: {x: 1.875, y: 1.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25,12 +25,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.7519789, y: 0.14686425}
-      - {x: 0.67065144, y: -0.64495295}
-      - {x: -0.46221924, y: -0.7686437}
-      - {x: -0.9010148, y: 0.9314648}
-      - {x: -0.28976393, y: 0.4665175}
-      - {x: 0.35717535, y: 0.5507636}
+    - - {x: 0.6490717, y: 0.13290644}
+      - {x: 0.5813308, y: -0.55735016}
+      - {x: -0.403368, y: -0.6651461}
+      - {x: -0.7789016, y: 0.8079448}
+      - {x: -0.24783039, y: 0.40173984}
+      - {x: 0.3096819, y: 0.47706676}
 --- !u!1001 &6748588707145475443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -122,7 +122,7 @@ PrefabInstance:
     - target: {fileID: 8159132192683325613, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_Mass
-      value: 1.6792741
+      value: 1.259155
       objectReference: {fileID: 0}
     - target: {fileID: 2536079771947441780, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}

@@ -149,5 +149,9 @@ public class moneymanager : MonoBehaviour
     {
         decimal decreaseby = 1.25M;
         CostOfBoxes[level] = CostOfBoxes[level] / decreaseby;
+        if (CostOfBoxes[level] < StartingCostOfBoxes[level])
+        {
+            CostOfBoxes[level] = StartingCostOfBoxes[level];
+        }
     }
 }
