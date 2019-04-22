@@ -10,14 +10,15 @@ public class moneymanager : MonoBehaviour
     public decimal Money;
     public decimal MoneyPerSecond;
     public int[] MakingMoneyBoxes = new int[3];
+    public int[] OwnedBoxes = new int[3];
 
     public int[] Mpsofboxes = new int[3];
-    public Decimal[] CostOfBoxes;
+    public decimal[] CostOfBoxes;
     public int[] PlatformUpgradeCosts = new int[1];
 
     private string[] BigNumberNames;
 
-    public Decimal[] StartingCostOfBoxes = new Decimal[4];
+    public decimal[] StartingCostOfBoxes = new decimal[4];
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
@@ -26,10 +27,11 @@ public class moneymanager : MonoBehaviour
     {
         InvokeRepeating("AddMoney", 0, 1);
         BigNumberNames = new string[12] 
-        { "", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Quintillion",
-         "Sextillion", "Septillion", "Octillion", "Nonillion", "Decillion" };
-        CostOfBoxes = new Decimal[4] {20, 200, 2000, 200000000 };
+        { "", "_Thousand", "_Million", "_Billion", "_Trillion", "_Quadrillion", "_Quintillion",
+         "_Sextillion", "_Septillion", "_Octillion", "_Nonillion", "_Decillion" };
+        CostOfBoxes = new decimal[4] {20, 58, 168.2m, 487.78m };
         Array.Copy(CostOfBoxes, StartingCostOfBoxes, CostOfBoxes.Length);
+        OwnedBoxes[0] = 1;
     }
 
     void AddMoney ()
@@ -56,7 +58,7 @@ public class moneymanager : MonoBehaviour
     public int HowBigNumber (decimal Monay)
     {
         decimal max = 999.999999999999999999M;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < BigNumberNames.Length; i++)
         {
             if (Monay < max)
             {
@@ -80,7 +82,8 @@ public class moneymanager : MonoBehaviour
     {
         int HowBig = HowBigNumber(input);
         string moneyout;
-        moneyout = (input / (decimal)Mathf.Pow(1000, HowBig)) + "";
+        decimal uhh = Math.Round(input / (decimal)Mathf.Pow(1000, HowBig), 2);
+        moneyout = uhh.ToString();
 
         if (moneyout.IndexOf('.') == -1)
         {
@@ -96,11 +99,11 @@ public class moneymanager : MonoBehaviour
             moneyout = "_" + moneyout;
         }
 
-        moneyout = moneyout + "_" + BigNumberNames[HowBig];
+        moneyout = moneyout + BigNumberNames[HowBig];
         return moneyout;
     }
 
-    public void RemoveMoney (int amount)
+    public void RemoveMoney (decimal amount)
     {
         Money -= amount;
     }
@@ -125,9 +128,26 @@ public class moneymanager : MonoBehaviour
         return true;
     }
 
+    public bool NoOwnedBoxes ()
+    {
+        bool fuckin = true;
+        foreach (int t in OwnedBoxes)
+        {
+            if (t != 0)
+            { fuckin = false; }
+        }
+        return fuckin;
+    }
+
     public void IncreaseBoxCosts (int level)
     {
-        decimal increaseby = 1.05M;
+        decimal increaseby = 1.25M;
         CostOfBoxes[level] = CostOfBoxes[level] * increaseby;
+    }
+
+    public void DecreaseBoxCosts (int level)
+    {
+        decimal decreaseby = 1.25M;
+        CostOfBoxes[level] = CostOfBoxes[level] / decreaseby;
     }
 }

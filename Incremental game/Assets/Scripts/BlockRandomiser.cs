@@ -8,8 +8,8 @@ public class BlockRandomiser : MonoBehaviour
 
     void Start()
     {
-        //make the random number
-        Instantiate(boxes[0]);
+        Transform spawnpoint = GameObject.FindWithTag("SpawnPoint").transform;
+        Instantiate(boxes[Random.Range(0,boxes.Length)], spawnpoint.transform.position, spawnpoint.transform.rotation);
         Destroy(this.gameObject);
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - MoneyManager
   - TheCanvas
   - Block
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
