@@ -33,7 +33,7 @@ public class Buttonsdostuff : MonoBehaviour
         MoneyManagerObject = GameObject.FindWithTag("MoneyManager");
         MoneyManagerRef = MoneyManagerObject.GetComponent<moneymanager>();
         SpawnLocationRef = SpawnLocation.GetComponent<SpaceIsClear>();
-        updatebuttonlabesl();
+        UpdateButtonLabesl();
     }
 
     public void spawnblock (int level)
@@ -44,7 +44,7 @@ public class Buttonsdostuff : MonoBehaviour
             MoneyManagerRef.RemoveMoney(MoneyManagerRef.CostOfBoxes[level]);
             MoneyManagerRef.IncreaseBoxCosts(level);
             MoneyManagerRef.OwnedBoxes[level] += 1;
-            updatebuttonlabesl();
+            UpdateButtonLabesl();
         }
     }
 
@@ -87,38 +87,36 @@ public class Buttonsdostuff : MonoBehaviour
         Array.Copy(MoneyManagerRef.StartingCostOfBoxes, MoneyManagerRef.CostOfBoxes, MoneyManagerRef.CostOfBoxes.Length);
         Array.Clear(MoneyManagerRef.OwnedBoxes, 0, MoneyManagerRef.OwnedBoxes.Length);
         StuckDetection();
-        updatebuttonlabesl();
+        UpdateButtonLabesl();
 
     }
 
-    public void updatebuttonlabesl ()
+    public void UpdateButtonLabesl ()
     {
         for (int i = 0; i < ButtonLabels.Length; i++)
         {
-            string output;
-            decimal uhh = Math.Round(MoneyManagerRef.CostOfBoxes[i], 2);
-            output = uhh + "";
-            if (output.IndexOf('.') != -1)
-            {
-                if (output.Substring(output.IndexOf('.'), output.Length - output.IndexOf('.')).Length <= 2)
-                { output = output.Substring(0, output.IndexOf('.') + 2) + "0"; }
-                else
-                { output = output.Substring(0, output.IndexOf('.') + 3); }
-            }
-            else
-            {
-                output += ".00";
-            }
-            ButtonLabels[i].text = "lvl" + (i+1) + ": $" + output;
+            ButtonLabels[i].text = MoneyManagerRef.FormatNumbers(MoneyManagerRef.CostOfBoxes[i], false);
+
+            //string output;
+            //decimal RoundedInput = Math.Round(MoneyManagerRef.CostOfBoxes[i], 2);
+            //output = RoundedInput + "";
+            //if (output.IndexOf('.') != -1)
+            //{
+            //    if (output.Substring(output.IndexOf('.'), output.Length - output.IndexOf('.')).Length <= 2)
+            //    { output = output.Substring(0, output.IndexOf('.') + 2) + "0"; }
+            //    else
+            //    { output = output.Substring(0, output.IndexOf('.') + 3); }
+            //}
+            //else
+            //{
+            //    output += ".00";
+            //}
+            //ButtonLabels[i].text = "lvl" + (i+1) + ": $" + output;
         }
     }
 
     public void StuckDetection ()
     {
-        Debug.Log(MoneyManagerRef.Money);
-        Debug.Log(MoneyManagerRef.CostOfBoxes[0]);
-        Debug.Log(MoneyManagerRef.NoOwnedBoxes());
-
         if (MoneyManagerRef.Money < MoneyManagerRef.CostOfBoxes[0] && MoneyManagerRef.NoOwnedBoxes())
         {
             StuckUi.SetActive(true);

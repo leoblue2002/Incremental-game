@@ -42,16 +42,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: level 2,1 Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 8644446106798777924, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: Level
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8644446106798777924, guid: 0268fea11f5a044de822db14cf85a481,
-        type: 3}
-      propertyPath: IsGround
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325614, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_Sprite
@@ -128,10 +118,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.031
+      objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325613, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_Mass
-      value: 1.1768122
+      value: 1.2509053
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644446106798777924, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: Level
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8644446106798777924, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: IsGround
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0268fea11f5a044de822db14cf85a481, type: 3}

@@ -74,33 +74,37 @@ public class moneymanager : MonoBehaviour
 
     public void UpdateDisplays ()
     {
-        MoneyDisplay.text = "Money:_" + FormatNumbers(Money);
-        MpsDisplay.text = "Money Per Second:_" + FormatNumbers(MoneyPerSecond);
+        MoneyDisplay.text = "Money:_" + FormatNumbers(Money,true);
+        MpsDisplay.text = "Money Per Second:_" + FormatNumbers(MoneyPerSecond,true);
     }
 
-    private string FormatNumbers (decimal input)
+    public string FormatNumbers (decimal input,bool lockdecimalpoint)
     {
         int HowBig = HowBigNumber(input);
-        string moneyout;
-        decimal uhh = Math.Round(input / (decimal)Mathf.Pow(1000, HowBig), 2);
-        moneyout = uhh.ToString();
+        string Output;
+        decimal RoundedInput = Math.Round(input / (decimal)Mathf.Pow(1000, HowBig), 2);
+        Output = RoundedInput.ToString();
 
-        if (moneyout.IndexOf('.') == -1)
+        if (Output.IndexOf('.') == -1)
         {
-            moneyout += ".00";
+            Output += ".00";
         }
         else
         {
-            moneyout = moneyout.Substring(0, moneyout.IndexOf('.') + 3);
+            if (Output.Substring(Output.IndexOf('.'), Output.Length - Output.IndexOf('.')).Length <= 2)
+            { Output = Output.Substring(0, Output.IndexOf('.') + 2) + "0"; }
+            else
+            { Output = Output.Substring(0, Output.IndexOf('.') + 3); }
         }
-
-        while (moneyout.Length != 6)
+        if (lockdecimalpoint)
         {
-            moneyout = "_" + moneyout;
+            while (Output.Length != 6)
+            {
+                Output = "_" + Output;
+            }
         }
-
-        moneyout = moneyout + BigNumberNames[HowBig];
-        return moneyout;
+        Output = Output + BigNumberNames[HowBig];
+        return Output;
     }
 
     public void RemoveMoney (decimal amount)
@@ -130,13 +134,13 @@ public class moneymanager : MonoBehaviour
 
     public bool NoOwnedBoxes ()
     {
-        bool fuckin = true;
+        bool yehaw = true;
         foreach (int t in OwnedBoxes)
         {
             if (t != 0)
-            { fuckin = false; }
+            { yehaw = false; }
         }
-        return fuckin;
+        return yehaw;
     }
 
     public void IncreaseBoxCosts (int level)

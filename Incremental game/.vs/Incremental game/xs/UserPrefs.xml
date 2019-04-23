@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{F3DCB4FA-CB43-B114-FF42-ACD539710151}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/killcoliding.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/moneymanager.cs">
     <Files>
       <File FileName="Assets/Scripts/mousedrag.cs" Line="11" Column="35" />
       <File FileName="Assets/Scripts/IsTouchingGround.cs" Line="33" Column="6" />
-      <File FileName="Assets/Scripts/moneymanager.cs" Line="32" Column="60" />
+      <File FileName="Assets/Scripts/moneymanager.cs" Line="154" Column="61" />
       <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="132" Column="28" />
       <File FileName="Assets/Scripts/CamraSlider.cs" Line="10" Column="41" />
-      <File FileName="Assets/Scripts/killcoliding.cs" Line="24" Column="9" />
+      <File FileName="Assets/Scripts/killcoliding.cs" Line="21" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

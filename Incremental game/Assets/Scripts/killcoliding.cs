@@ -21,6 +21,6 @@ public class killcoliding : MonoBehaviour
         MMref.DecreaseBoxCosts(level);
         Destroy(collision.gameObject);
         bmref.StuckDetection();
-        bmref.updatebuttonlabesl();
+        bmref.UpdateButtonLabesl();
     }
 }
