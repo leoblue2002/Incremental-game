@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\killcoliding.cs" />
     <Compile Include="Assets\Scripts\moneymanager.cs" />
     <Compile Include="Assets\Scripts\mousedrag.cs" />
+    <Compile Include="Assets\Scripts\ScreenEdgeWarp.cs" />
     <Compile Include="Assets\Scripts\SpaceIsClear.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Volumes/SSD 1/Incremental game/Incremental-game/Incremental game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

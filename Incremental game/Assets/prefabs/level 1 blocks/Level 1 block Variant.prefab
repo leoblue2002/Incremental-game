@@ -134,6 +134,26 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.0006409
       objectReference: {fileID: 0}
+    - target: {fileID: 3534508858755528381, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 3534508858755528381, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709226389728064685, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.028
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709226389728064685, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.028
+      objectReference: {fileID: 0}
     - target: {fileID: 2536079771947441780, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_IsActive
