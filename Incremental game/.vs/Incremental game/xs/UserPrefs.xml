@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{F3DCB4FA-CB43-B114-FF42-ACD539710151}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SpaceIsClear.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/IsTouchingGround.cs">
     <Files>
       <File FileName="Assets/Scripts/mousedrag.cs" Line="11" Column="35" />
-      <File FileName="Assets/Scripts/IsTouchingGround.cs" Line="33" Column="6" />
-      <File FileName="Assets/Scripts/moneymanager.cs" Line="117" Column="38" />
-      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="119" Column="6" />
-      <File FileName="Assets/Scripts/CamraSlider.cs" Line="9" Column="33" />
+      <File FileName="Assets/Scripts/IsTouchingGround.cs" Line="51" Column="1" />
+      <File FileName="Assets/Scripts/moneymanager.cs" Line="155" Column="1" />
+      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="87" Column="1" />
+      <File FileName="Assets/Scripts/CamraSlider.cs" Line="17" Column="47" />
+      <File FileName="Assets/Scripts/ScreenEdgeWarp.cs" Line="19" Column="6" />
       <File FileName="Assets/Scripts/killcoliding.cs" Line="21" Column="39" />
-      <File FileName="Assets/Scripts/ScreenEdgeWarp.cs" Line="8" Column="28" />
       <File FileName="Assets/Scripts/SpaceIsClear.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
