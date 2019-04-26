@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1.9531811
       objectReference: {fileID: 0}
+    - target: {fileID: 8644446106798777924, guid: 0268fea11f5a044de822db14cf85a481,
+        type: 3}
+      propertyPath: Level
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3534508858755528381, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_LocalScale.x

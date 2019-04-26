@@ -11,8 +11,10 @@ public class Buttonsdostuff : MonoBehaviour
     private bool UpgradeMenueIsOpen = false;
 
     public GameObject SpawnLocation;
-    public GameObject CamraSlider;
-    
+    public GameObject CamraObject;
+    public Slider CamraSliderSlider;
+    public Text CamraUpgradeText;
+
     public GameObject lid;
     public GameObject UiThing;
     public GameObject StuckUi;
@@ -26,6 +28,8 @@ public class Buttonsdostuff : MonoBehaviour
     private GameObject MoneyManagerObject;
     private moneymanager MoneyManagerRef;
     private SpaceIsClear SpawnLocationRef;
+    private CamraSlider CamraSliderRef;
+
 
 
     private void Start()
@@ -33,10 +37,11 @@ public class Buttonsdostuff : MonoBehaviour
         MoneyManagerObject = GameObject.FindWithTag("MoneyManager");
         MoneyManagerRef = MoneyManagerObject.GetComponent<moneymanager>();
         SpawnLocationRef = SpawnLocation.GetComponent<SpaceIsClear>();
+        CamraSliderRef = CamraObject.GetComponent<CamraSlider>();
         UpdateButtonLabesl();
     }
 
-    public void spawnblock (int level)
+    public void Spawnblock (int level)
     {
         if (MoneyManagerRef.CanAfford(level) && SpawnLocationRef.YeahItsClear)
         {
@@ -50,19 +55,22 @@ public class Buttonsdostuff : MonoBehaviour
 
     public void CamraUpgrades ()
     {
-        float maxrange = 2.3f;
-        float howbigslider = 54.9f;
+        if (MoneyManagerRef.EnoughCash(MoneyManagerRef.CamraUpgradePrice))
+        {
+            CamraSliderRef.MaxUpwardRange += 1.8f;
 
-        
-        
+            MoneyManagerRef.CamraUpgradePrice *= 1.5m;
+        }
+
+
+        //float howbigslider = 54.9f;
         //uhh wierd codin workin on.
-        maxrange += 1.8f;
-        howbigslider += 30.5f;
+        //howbigslider += 30.5f;
         // internet said this would work, it didnt
-        CamraSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(0.5f, howbigslider);
+        //CamraSlider.GetComponent<RectTransform>().sizeDelta = new Vector2(0.5f, howbigslider);
     }
 
-    public void togglelid ()
+    public void Togglelid ()
     {
         lid.SetActive(togglehelper);
         togglehelper = !togglehelper;
@@ -95,7 +103,7 @@ public class Buttonsdostuff : MonoBehaviour
     {
         for (int i = 0; i < ButtonLabels.Length; i++)
         {
-            ButtonLabels[i].text = MoneyManagerRef.FormatNumbers(MoneyManagerRef.CostOfBoxes[i], false);
+            ButtonLabels[i].text = "lvl" + (i + 1) + ": $" + MoneyManagerRef.FormatNumbers(MoneyManagerRef.CostOfBoxes[i], false);
 
             //string output;
             //decimal RoundedInput = Math.Round(MoneyManagerRef.CostOfBoxes[i], 2);
@@ -113,6 +121,7 @@ public class Buttonsdostuff : MonoBehaviour
             //}
             //ButtonLabels[i].text = "lvl" + (i+1) + ": $" + output;
         }
+
     }
 
     public void StuckDetection ()

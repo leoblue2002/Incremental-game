@@ -19,6 +19,7 @@ public class moneymanager : MonoBehaviour
     private string[] BigNumberNames;
 
     public decimal[] StartingCostOfBoxes = new decimal[4];
+    public decimal CamraUpgradePrice = 1000m;
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
@@ -117,7 +118,7 @@ public class moneymanager : MonoBehaviour
         return Money >= CostOfBoxes[level];
     }
 
-    public bool EnoughCash (int cash)
+    public bool EnoughCash (decimal cash)
     {
         return Money >= cash;
     }
