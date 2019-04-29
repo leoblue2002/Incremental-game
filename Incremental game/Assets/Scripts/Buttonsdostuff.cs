@@ -12,7 +12,7 @@ public class Buttonsdostuff : MonoBehaviour
 
     public GameObject SpawnLocation;
     public GameObject CamraObject;
-    public Slider CamraSliderSlider;
+    public GameObject CamraSliderSlider;
     public Text CamraUpgradeText;
 
     public GameObject lid;
@@ -26,7 +26,7 @@ public class Buttonsdostuff : MonoBehaviour
     public Text[] ButtonLabels = new Text[4];
 
     private GameObject MoneyManagerObject;
-    private moneymanager MoneyManagerRef;
+    private moneymanager MoneyManagerRef; 
     private SpaceIsClear SpawnLocationRef;
     private CamraSlider CamraSliderRef;
 
@@ -53,13 +53,17 @@ public class Buttonsdostuff : MonoBehaviour
         }
     }
 
+
     public void CamraUpgrades ()
     {
         if (MoneyManagerRef.EnoughCash(MoneyManagerRef.CamraUpgradePrice))
         {
+            CamraSliderSlider.SetActive(true);
             CamraSliderRef.MaxUpwardRange += 1.8f;
-
+            MoneyManagerRef.RemoveMoney(MoneyManagerRef.CamraUpgradePrice);
             MoneyManagerRef.CamraUpgradePrice *= 1.5m;
+            CamraUpgradeText.text = "Upgrade Camra: " + MoneyManagerRef.FormatNumbers(MoneyManagerRef.CamraUpgradePrice, false);
+            CamraSliderSlider.GetComponent<Slider>().maxValue = CamraSliderRef.MaxUpwardRange;
         }
 
 

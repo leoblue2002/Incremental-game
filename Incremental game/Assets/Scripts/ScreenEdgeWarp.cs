@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ScreenEdgeWarp : MonoBehaviour
 {
+    public int PlaySpaceWidth = 15;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("triggered the wall!");
         if (other.transform.position.x > 1)
         {
-            other.transform.Translate(new Vector3(-15, 0, 0), Space.World);
+            other.transform.Translate(new Vector3(-PlaySpaceWidth, 0, 0), Space.World);
         }
         else
         {
-            other.transform.Translate(new Vector3(15, 0, 0), Space.World);
+            other.transform.Translate(new Vector3(PlaySpaceWidth, 0, 0), Space.World);
         }
+        other.GetComponent<mousedrag>().selected = false;
     }
 }
