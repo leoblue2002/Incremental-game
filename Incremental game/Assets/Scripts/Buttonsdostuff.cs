@@ -10,6 +10,7 @@ public class Buttonsdostuff : MonoBehaviour
     private bool blockmenueisopen = false;
     private bool UpgradeMenueIsOpen = false;
 
+    public GameObject MapBoundreys;
     public GameObject SpawnLocation;
     public GameObject CamraObject;
     public GameObject CamraSliderSlider;
@@ -165,6 +166,28 @@ public class Buttonsdostuff : MonoBehaviour
             PlatformUpgrades[level].SetActive(true);
             MoneyManagerRef.RemoveMoney(MoneyManagerRef.PlatformUpgradeCosts[level]);
         }
+    }
+
+    public void BuyNewPlatform ()
+    {
+        //transform the map boundries
+        Vector3 Stupid;
+        Transform output = MapBoundreys.transform;
+
+        Stupid = output.localScale;
+        Stupid.x += 1;
+        MapBoundreys.transform.localScale = Stupid;
+
+        Stupid = output.localPosition;
+        Stupid.x -= 8;
+        MapBoundreys.transform.localPosition = Stupid;
+        
+
+        //update/activate horizontal camra slider
+
+        //instantiate the new platform and move it to the left
+
+
     }
 
     public void ToggleBlockBuy ()
