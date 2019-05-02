@@ -593,7 +593,7 @@ RectTransform:
   - {fileID: 971070582}
   - {fileID: 620582729}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -633,7 +633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 5, y: 0}
+  m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &201021914
@@ -1154,7 +1154,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2202,6 +2202,10 @@ MonoBehaviour:
   CheatingMoney: 0
   MakingMoneyBoxes: 00000000000000000000000000000000
   OwnedBoxes: 00000000000000000000000000000000
+  PlatformUpgraders: []
+  platform: {fileID: 8304337075227751728, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
+    type: 3}
+  SelectedPlatform: 0
   Mpsofboxes: 0100000003000000090000001b000000
   PlatformUpgradeCosts: 10270000
   MoneyDisplay: {fileID: 914187487}
@@ -2970,7 +2974,7 @@ PrefabInstance:
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
@@ -3831,7 +3835,7 @@ Transform:
   - {fileID: 970141715}
   - {fileID: 613100586}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1259777843
 GameObject:
@@ -4511,12 +4515,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1355304158}
   m_CullTransparentMesh: 0
---- !u!1 &1378052655 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8304337075039968457, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-    type: 3}
-  m_PrefabInstance: {fileID: 8304337074270402278}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415159425
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,7 +4873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1550000709
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4937,14 +4935,25 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1769432013}
   m_FillRect: {fileID: 476792148}
   m_HandleRect: {fileID: 1769432012}
-  m_Direction: 1
+  m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 519420030}
+        m_MethodName: MoveCamraHorizontal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1633462903
@@ -5140,7 +5149,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1683265913 stripped
 GameObject:
@@ -5252,7 +5261,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1686220090}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2110102604}
+        m_MethodName: BuyNewPlatform
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1686220090
@@ -5444,7 +5464,7 @@ Transform:
   - {fileID: 1127130282}
   - {fileID: 622520330}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1746247563
 GameObject:
@@ -5700,7 +5720,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6144,7 +6164,7 @@ PrefabInstance:
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8159132192683325615, guid: 0268fea11f5a044de822db14cf85a481,
         type: 3}
@@ -6364,6 +6384,7 @@ MonoBehaviour:
   SpawnLocation: {fileID: 1430962680}
   CamraObject: {fileID: 519420028}
   CamraSliderSlider: {fileID: 341988668}
+  CamraSliderSliderHorizontal: {fileID: 1550000708}
   CamraUpgradeText: {fileID: 124457164}
   lid: {fileID: 622520328}
   UiThing: {fileID: 1200272370}
@@ -6376,7 +6397,7 @@ MonoBehaviour:
   - {fileID: 3924720690247605108, guid: 2aa7136d26c584af5997bcfe2284e3ea, type: 3}
   - {fileID: 3788945990555479432, guid: 42e43a6e7fb7e7f408c09f1867b53a91, type: 3}
   PlatformUpgrades:
-  - {fileID: 1378052655}
+  - {fileID: 0}
   ButtonLabels:
   - {fileID: 869865821}
   - {fileID: 941188475}
@@ -6525,7 +6546,7 @@ PrefabInstance:
     - target: {fileID: 579028015357077937, guid: f0965509dc59faa4fa934f7d6777d4eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 579028015357077937, guid: f0965509dc59faa4fa934f7d6777d4eb,
         type: 3}
@@ -6549,72 +6570,3 @@ PrefabInstance:
       objectReference: {fileID: 1430962681}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0965509dc59faa4fa934f7d6777d4eb, type: 3}
---- !u!1001 &8304337074270402278
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8304337075227751728, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_Name
-      value: new platform
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8304337075227751741, guid: 2cf2f2424d4a3444ab996371bfbaa6dc,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2cf2f2424d4a3444ab996371bfbaa6dc, type: 3}

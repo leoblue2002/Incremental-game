@@ -11,6 +11,9 @@ public class moneymanager : MonoBehaviour
     public decimal MoneyPerSecond;
     public int[] MakingMoneyBoxes = new int[3];
     public int[] OwnedBoxes = new int[3];
+    public List<PlatformUpgrader> PlatformUpgraders;
+    public GameObject platform;
+    public int SelectedPlatform;
 
     public int[] Mpsofboxes = new int[3];
     public decimal[] CostOfBoxes;
@@ -33,6 +36,8 @@ public class moneymanager : MonoBehaviour
         CostOfBoxes = new decimal[4] {20, 58, 168.2m, 487.78m };
         Array.Copy(CostOfBoxes, StartingCostOfBoxes, CostOfBoxes.Length);
         OwnedBoxes[0] = 1;
+
+        PlatformUpgraders.Add(Instantiate(platform).GetComponent<PlatformUpgrader>());
     }
 
     void AddMoney ()

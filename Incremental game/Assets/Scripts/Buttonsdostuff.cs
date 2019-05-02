@@ -14,6 +14,7 @@ public class Buttonsdostuff : MonoBehaviour
     public GameObject SpawnLocation;
     public GameObject CamraObject;
     public GameObject CamraSliderSlider;
+    public GameObject CamraSliderSliderHorizontal;
     public Text CamraUpgradeText;
 
     public GameObject lid;
@@ -181,13 +182,16 @@ public class Buttonsdostuff : MonoBehaviour
         Stupid = output.localPosition;
         Stupid.x -= 8;
         MapBoundreys.transform.localPosition = Stupid;
-        
+
 
         //update/activate horizontal camra slider
+        CamraSliderSliderHorizontal.SetActive(true);
+        CamraSliderSliderHorizontal.GetComponent<Slider>().minValue -= 16;
 
         //instantiate the new platform and move it to the left
-
-
+        Transform LMP = MoneyManagerRef.PlatformUpgraders[PlatformUpgrades.Length - 1].transform.parent;
+        Debug.Log("x =" + (LMP.position.x - 16));
+        MoneyManagerRef.PlatformUpgraders.Add(Instantiate(MoneyManagerRef.platform, new Vector3(LMP.position.x - 16, LMP.position.y, LMP.position.z),LMP.rotation).GetComponent<PlatformUpgrader>());
     }
 
     public void ToggleBlockBuy ()

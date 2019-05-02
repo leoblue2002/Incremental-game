@@ -1,0 +1,2 @@
+/Volumes/SSD 1/Incremental game/Incremental-game/Incremental game/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache
+/Volumes/SSD 1/Incremental game/Incremental-game/Incremental game/obj/Debug/Assembly-CSharp.csproj.CoreCompileInputs.cache

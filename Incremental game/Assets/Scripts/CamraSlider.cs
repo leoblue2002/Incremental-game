@@ -10,10 +10,24 @@ public class CamraSlider : MonoBehaviour
     public float MaxUpwardRange;
     private float MinLowerRange = 0.5f;
 
+    private moneymanager MMRef;
+
+    private void Start()
+    {
+        MMRef = GameObject.FindWithTag("MoneyManager").GetComponent<moneymanager>();
+    }
+
     public void MoveCamra (float yehaw)
     {
         Vector3 NiceVariableName = new Vector3(0,yehaw,-10);
         transform.position = NiceVariableName;
+    }
+
+    public void MoveCamraHorizontal(float yehaw)
+    {
+        Vector3 NiceVariableName = new Vector3(yehaw, 0, -10);
+        transform.position = NiceVariableName;
+       //UpdateSelectedPlatform();
     }
 
     public void SlideCamra (float yehaw)
