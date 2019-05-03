@@ -24,7 +24,7 @@ public class Buttonsdostuff : MonoBehaviour
     public GameObject BuyUpgradesMenue;
 
     public GameObject[] spawners = new GameObject[3];
-    public GameObject[] PlatformUpgrades = new GameObject[1];
+
     public Text[] ButtonLabels = new Text[4];
 
     private GameObject MoneyManagerObject;
@@ -160,12 +160,12 @@ public class Buttonsdostuff : MonoBehaviour
         StuckUi.SetActive(false);
     }
 
-    public void PlatformUpgrader (int level)
+    public void PlatformUpgrader ()
     {
-        if (MoneyManagerRef.EnoughCash(MoneyManagerRef.PlatformUpgradeCosts[level]))
+        if (MoneyManagerRef.EnoughCash(MoneyManagerRef.PlatformUpgradeCosts[MoneyManagerRef.PlatformUpgraders[MoneyManagerRef.SelectedPlatform].currentlevel]))
         {
-            PlatformUpgrades[level].SetActive(true);
-            MoneyManagerRef.RemoveMoney(MoneyManagerRef.PlatformUpgradeCosts[level]);
+            MoneyManagerRef.PlatformUpgraders[MoneyManagerRef.SelectedPlatform].Upgrade();
+            MoneyManagerRef.RemoveMoney(MoneyManagerRef.PlatformUpgradeCosts[MoneyManagerRef.PlatformUpgraders[MoneyManagerRef.SelectedPlatform].currentlevel]);
         }
     }
 
@@ -189,8 +189,7 @@ public class Buttonsdostuff : MonoBehaviour
         CamraSliderSliderHorizontal.GetComponent<Slider>().minValue -= 16;
 
         //instantiate the new platform and move it to the left
-        Transform LMP = MoneyManagerRef.PlatformUpgraders[PlatformUpgrades.Length - 1].transform.parent;
-        Debug.Log("x =" + (LMP.position.x - 16));
+        Transform LMP = MoneyManagerRef.PlatformUpgraders[MoneyManagerRef.PlatformUpgraders.Count - 1].transform;
         MoneyManagerRef.PlatformUpgraders.Add(Instantiate(MoneyManagerRef.platform, new Vector3(LMP.position.x - 16, LMP.position.y, LMP.position.z),LMP.rotation).GetComponent<PlatformUpgrader>());
     }
 

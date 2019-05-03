@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{F3DCB4FA-CB43-B114-FF42-ACD539710151}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/moneymanager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Buttonsdostuff.cs">
     <Files>
-      <File FileName="Assets/Scripts/moneymanager.cs" Line="39" Column="45" />
-      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="189" Column="15" />
+      <File FileName="Assets/Scripts/moneymanager.cs" Line="168" Column="1" />
+      <File FileName="Assets/Scripts/Buttonsdostuff.cs" Line="193" Column="1" />
       <File FileName="Assets/Scripts/CamraSlider.cs" Line="30" Column="10" />
       <File FileName="Assets/Scripts/killcoliding.cs" Line="20" Column="1" />
       <File FileName="Assets/Scripts/IsTouchingGround.cs" Line="1" Column="1" />

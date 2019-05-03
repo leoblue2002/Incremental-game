@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class CamraSlider : MonoBehaviour
 {
     public Slider CamraSlideyboyo;
+    public Slider CamraSliderHorizontal;
     public float ScrolSensitivity = 1;
     public float MaxUpwardRange;
     private float MinLowerRange = 0.5f;
+    public Text PlatformUpgradeText;
 
     private moneymanager MMRef;
 
@@ -19,15 +21,36 @@ public class CamraSlider : MonoBehaviour
 
     public void MoveCamra (float yehaw)
     {
-        Vector3 NiceVariableName = new Vector3(0,yehaw,-10);
+        Vector3 NiceVariableName = new Vector3(transform.position.x,yehaw,-10);
         transform.position = NiceVariableName;
     }
 
     public void MoveCamraHorizontal(float yehaw)
     {
-        Vector3 NiceVariableName = new Vector3(yehaw, 0, -10);
+        Vector3 NiceVariableName = new Vector3(yehaw, transform.position.y, -10);
         transform.position = NiceVariableName;
-       //UpdateSelectedPlatform();
+        MMRef.SelectedPlatform = UpdateSelectedPlatform();
+
+    }
+
+    public int UpdateSelectedPlatform()
+    {
+        float slidervalue = CamraSliderHorizontal.value;
+        int max = 8;
+        int min = -8;
+        for (int i = 0; i < MMRef.PlatformUpgraders.Count; i++)
+        {
+            if (slidervalue <= max && slidervalue >= min)
+            {
+                return i;
+            }
+            else
+            {
+                max -= 16;
+                min -= 16;
+            }
+        }
+        return -1;
     }
 
     public void SlideCamra (float yehaw)

@@ -1314,8 +1314,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CamraSlideyboyo: {fileID: 341988670}
+  CamraSliderHorizontal: {fileID: 1550000710}
   ScrolSensitivity: 1
   MaxUpwardRange: 0.5
+  PlatformUpgradeText: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2207,7 +2209,7 @@ MonoBehaviour:
     type: 3}
   SelectedPlatform: 0
   Mpsofboxes: 0100000003000000090000001b000000
-  PlatformUpgradeCosts: 10270000
+  PlatformUpgradeCosts: 1027000010270000
   MoneyDisplay: {fileID: 914187487}
   MpsDisplay: {fileID: 947036580}
 --- !u!1 &721846990
@@ -6050,7 +6052,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2110102604}
         m_MethodName: PlatformUpgrader
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6396,8 +6398,6 @@ MonoBehaviour:
   - {fileID: 2458816646124008176, guid: 13768181b358746b2a20585eda5eeec9, type: 3}
   - {fileID: 3924720690247605108, guid: 2aa7136d26c584af5997bcfe2284e3ea, type: 3}
   - {fileID: 3788945990555479432, guid: 42e43a6e7fb7e7f408c09f1867b53a91, type: 3}
-  PlatformUpgrades:
-  - {fileID: 0}
   ButtonLabels:
   - {fileID: 869865821}
   - {fileID: 941188475}

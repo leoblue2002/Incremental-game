@@ -10,7 +10,7 @@ public class PlatformUpgrader : MonoBehaviour
     public void Upgrade ()
     {
         Upgrades[currentlevel].SetActive(true);
-        if (Upgrades.Length > currentlevel)
+        if (Upgrades.Length - 1 > currentlevel)
         {
             currentlevel++;
         }
