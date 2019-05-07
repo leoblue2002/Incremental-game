@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class moneymanager : MonoBehaviour
 {
+
+    public bool CheckForMoney = true;
     public int CheatingMoney;
     public decimal Money;
     public decimal MoneyPerSecond;
@@ -104,9 +106,12 @@ public class moneymanager : MonoBehaviour
         }
         if (lockdecimalpoint)
         {
-            while (Output.Length != 6)
+            if (Output.Length < 6)
             {
-                Output = "_" + Output;
+                while (Output.Length != 6)
+                {
+                    Output = "_" + Output;
+                }
             }
         }
         Output = Output + BigNumberNames[HowBig];
@@ -120,12 +125,16 @@ public class moneymanager : MonoBehaviour
 
     public bool CanAfford (int level)
     {
-        return Money >= CostOfBoxes[level];
+        if (CheckForMoney)
+        { return Money >= CostOfBoxes[level]; }
+        return true;
     }
 
     public bool EnoughCash (decimal cash)
     {
-        return Money >= cash;
+        if (CheckForMoney)
+        { return Money >= cash; }
+        return true;
     }
 
     public bool NoActiveBoxes ()

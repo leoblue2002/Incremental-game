@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CamraSlider : MonoBehaviour
 {
+    public GameObject BackGround;
     public Slider CamraSlideyboyo;
     public Slider CamraSliderHorizontal;
     public float ScrolSensitivity = 1;
@@ -29,8 +30,8 @@ public class CamraSlider : MonoBehaviour
     {
         Vector3 NiceVariableName = new Vector3(yehaw, transform.position.y, -10);
         transform.position = NiceVariableName;
+        BackGround.transform.position = new Vector3(yehaw, BackGround.transform.position.y, BackGround.transform.position.z);
         MMRef.SelectedPlatform = UpdateSelectedPlatform();
-
     }
 
     public int UpdateSelectedPlatform()

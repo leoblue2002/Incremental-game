@@ -9,6 +9,7 @@ public class PlatformUpgrader : MonoBehaviour
 
     public void Upgrade ()
     {
+        Debug.Log("Upgrade script ran!");
         Upgrades[currentlevel].SetActive(true);
         if (Upgrades.Length - 1 > currentlevel)
         {
