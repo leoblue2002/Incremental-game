@@ -63,7 +63,7 @@ public class Buttonsdostuff : MonoBehaviour
             CamraSliderSlider.SetActive(true);
             CamraSliderRef.MaxUpwardRange += 1.8f;
             MoneyManagerRef.RemoveMoney(MoneyManagerRef.CamraUpgradePrice);
-            MoneyManagerRef.CamraUpgradePrice *= 1.5m;
+            MoneyManagerRef.CamraUpgradePrice *= 1.1m;
             CamraUpgradeText.text = "Upgrade Camra: " + MoneyManagerRef.FormatNumbers(MoneyManagerRef.CamraUpgradePrice, false);
             CamraSliderSlider.GetComponent<Slider>().maxValue = CamraSliderRef.MaxUpwardRange;
         }
@@ -169,8 +169,10 @@ public class Buttonsdostuff : MonoBehaviour
         }
     }
 
-    public void BuyNewPlatform ()
+    public void BuyNewPlatform()
     {
+        if (MoneyManagerRef.EnoughCash(MoneyManagerRef.CostOfNewPlatform))
+        {
         //transform the map boundries
         Vector3 Stupid;
         Transform output = MapBoundreys.transform;
@@ -182,7 +184,7 @@ public class Buttonsdostuff : MonoBehaviour
         Stupid = output.localPosition;
         Stupid.x -= 8;
         MapBoundreys.transform.localPosition = Stupid;
-
+        GameObject.FindWithTag("Walls").GetComponent<ScreenEdgeWarp>().PlaySpaceWidth = MoneyManagerRef.PlatformUpgraders.Count * 16 - 1;
 
         //update/activate horizontal camra slider
         CamraSliderSliderHorizontal.SetActive(true);
@@ -190,7 +192,10 @@ public class Buttonsdostuff : MonoBehaviour
 
         //instantiate the new platform and move it to the left
         Transform LMP = MoneyManagerRef.PlatformUpgraders[MoneyManagerRef.PlatformUpgraders.Count - 1].transform;
-        MoneyManagerRef.PlatformUpgraders.Add(Instantiate(MoneyManagerRef.platform, new Vector3(LMP.position.x - 16, LMP.position.y, LMP.position.z),LMP.rotation).GetComponent<PlatformUpgrader>());
+        MoneyManagerRef.PlatformUpgraders.Add(Instantiate(MoneyManagerRef.platform, new Vector3(LMP.position.x - 16, LMP.position.y, LMP.position.z), LMP.rotation).GetComponent<PlatformUpgrader>());
+            MoneyManagerRef.RemoveMoney(MoneyManagerRef.CostOfNewPlatform);
+            MoneyManagerRef.CostOfNewPlatform *= 2;
+        }
     }
 
     public void ToggleBlockBuy ()

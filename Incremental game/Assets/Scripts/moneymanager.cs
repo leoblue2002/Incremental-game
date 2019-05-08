@@ -20,11 +20,12 @@ public class moneymanager : MonoBehaviour
     public int[] Mpsofboxes = new int[3];
     public decimal[] CostOfBoxes;
     public int[] PlatformUpgradeCosts = new int[1];
+    public decimal CostOfNewPlatform = 50000m;
 
     private string[] BigNumberNames;
 
     public decimal[] StartingCostOfBoxes = new decimal[4];
-    public decimal CamraUpgradePrice = 1000m;
+    public decimal CamraUpgradePrice = 75000m;
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
