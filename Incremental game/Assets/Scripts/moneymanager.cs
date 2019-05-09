@@ -26,6 +26,7 @@ public class moneymanager : MonoBehaviour
 
     public decimal[] StartingCostOfBoxes = new decimal[4];
     public decimal CamraUpgradePrice = 75000m;
+    public int CamraUpgradeLevel;
 
     public Text MoneyDisplay;
     public Text MpsDisplay;
@@ -121,7 +122,8 @@ public class moneymanager : MonoBehaviour
 
     public void RemoveMoney (decimal amount)
     {
-        Money -= amount;
+        if (CheckForMoney)
+        { Money -= amount; }
     }
 
     public bool CanAfford (int level)

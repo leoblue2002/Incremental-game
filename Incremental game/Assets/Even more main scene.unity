@@ -1364,7 +1364,7 @@ MonoBehaviour:
   CamraSliderHorizontal: {fileID: 1550000710}
   ScrolSensitivity: 1
   MaxUpwardRange: 0.5
-  PlatformUpgradeText: {fileID: 0}
+  PlatformUpgradeText: {fileID: 487463018}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -2178,7 +2178,8 @@ MonoBehaviour:
     type: 3}
   SelectedPlatform: 0
   Mpsofboxes: 0100000003000000090000001b000000
-  PlatformUpgradeCosts: 1027000010270000
+  PlatformUpgradeCosts: 10270000983a000000000000
+  CamraUpgradeLevel: 0
   MoneyDisplay: {fileID: 914187487}
   MpsDisplay: {fileID: 947036580}
 --- !u!1 &721846990
@@ -2984,7 +2985,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &969001763
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6199,6 +6200,8 @@ MonoBehaviour:
   CamraSliderSlider: {fileID: 341988668}
   CamraSliderSliderHorizontal: {fileID: 1550000708}
   CamraUpgradeText: {fileID: 124457164}
+  PlatformUpgradeText: {fileID: 487463018}
+  NewPlatformText: {fileID: 1418743856}
   lid: {fileID: 622520328}
   UiThing: {fileID: 1200272370}
   StuckUi: {fileID: 201021914}

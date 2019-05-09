@@ -32,6 +32,10 @@ public class CamraSlider : MonoBehaviour
         transform.position = NiceVariableName;
         BackGround.transform.position = new Vector3(yehaw, BackGround.transform.position.y, BackGround.transform.position.z);
         MMRef.SelectedPlatform = UpdateSelectedPlatform();
+        if (MMRef.PlatformUpgradeCosts[MMRef.PlatformUpgraders[MMRef.SelectedPlatform].currentlevel] != 0)
+        { PlatformUpgradeText.text = "Upgrade Platform " + (MMRef.SelectedPlatform + 1) + ": " + MMRef.FormatNumbers(MMRef.PlatformUpgradeCosts[MMRef.PlatformUpgraders[MMRef.SelectedPlatform].currentlevel], false); }
+        else
+        { PlatformUpgradeText.text = "Upgrade Platform " + (MMRef.SelectedPlatform + 1) + ": Max Level"; }
     }
 
     public int UpdateSelectedPlatform()
