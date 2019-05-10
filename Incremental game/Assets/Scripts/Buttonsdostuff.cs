@@ -149,10 +149,10 @@ public class Buttonsdostuff : MonoBehaviour
             StuckUi.SetActive(true);
         }
     }
-
+        // this whole method is wrong 
     private int CheapestLevel ()
     {
-        decimal biggest = Decimal.MaxValue;
+        decimal biggest = 0;
         int output = 0;
         for (int i = 0; i > MMRef.CostOfBoxes.Length; i++)
         {
@@ -176,8 +176,8 @@ public class Buttonsdostuff : MonoBehaviour
     {
         if (MMRef.EnoughCash(MMRef.PlatformUpgradeCosts[MMRef.PlatformUpgraders[MMRef.SelectedPlatform].currentlevel]))
         {
-            MMRef.PlatformUpgraders[MMRef.SelectedPlatform].Upgrade();
             MMRef.RemoveMoney(MMRef.PlatformUpgradeCosts[MMRef.PlatformUpgraders[MMRef.SelectedPlatform].currentlevel]);
+            MMRef.PlatformUpgraders[MMRef.SelectedPlatform].Upgrade();
             UpdateButtonLabesl();
         }
     }
@@ -197,7 +197,7 @@ public class Buttonsdostuff : MonoBehaviour
         Stupid = output.localPosition;
         Stupid.x -= 8;
         MapBoundreys.transform.localPosition = Stupid;
-        GameObject.FindWithTag("Walls").GetComponent<ScreenEdgeWarp>().PlaySpaceWidth = MMRef.PlatformUpgraders.Count * 16 - 1;
+        
 
         //update/activate horizontal camra slider
         CamraSliderSliderHorizontal.SetActive(true);
@@ -209,7 +209,8 @@ public class Buttonsdostuff : MonoBehaviour
             MMRef.RemoveMoney(MMRef.CostOfNewPlatform);
             MMRef.CostOfNewPlatform *= 2;
             NewPlatformText.text = "Unlock new platform: " + MMRef.FormatNumbers(MMRef.CostOfNewPlatform,false);
-
+            //had to be down here to work
+            GameObject.FindWithTag("Walls").GetComponent<ScreenEdgeWarp>().PlaySpaceWidth = MMRef.PlatformUpgraders.Count * 16 - 1;
         }
     }
 

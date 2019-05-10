@@ -65,6 +65,27 @@ public class mousedrag : MonoBehaviour
             rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
             letgo = false;
         }
+        if (Input.GetKeyDown(KeyCode.Backspace) && selected)
+        {
+            //start killing self
+            moneymanager MMref;
+            MMref = GameObject.FindWithTag("MoneyManager").GetComponent<moneymanager>();
+            int level = GetComponent<IsTouchingGround>().Level;
+            Buttonsdostuff bmref;
+            bmref = GameObject.FindWithTag("ButtonManager").GetComponent<Buttonsdostuff>();
+
+            MMref.OwnedBoxes[level] -= 1;
+            MMref.DecreaseBoxCosts(level);
+
+            bmref.StuckDetection();
+            bmref.UpdateButtonLabesl();
+
+            if (GetComponent<IsTouchingGround>().GetIsMakingMoney())
+            {
+                MMref.MakingMoneyBoxes[level]--;
+            }
+            Destroy(gameObject);
+        }
 
     }
 }

@@ -106,6 +106,11 @@ public class IsTouchingGround : MonoBehaviour
         }
     }
 
+    public bool GetIsMakingMoney ()
+    {
+        return IsMakingMoney;
+    }
+
     bool GetIsConnectedToPlatform ()
     {
         return IsConnectedToPlatform;

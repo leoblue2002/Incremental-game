@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\PlatformUpgrader.cs" />
     <Compile Include="Assets\Scripts\ScreenEdgeWarp.cs" />
     <Compile Include="Assets\Scripts\SpaceIsClear.cs" />
+    <Compile Include="Assets\Scripts\SpawnPointMover.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>/Volumes/SSD 1/Incremental game/Incremental-game/Incremental game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
