@@ -10,6 +10,7 @@ TagManager:
   - SpawnPoint
   - Walls
   - ButtonManager
+  - Platform
   layers:
   - Default
   - TransparentFX
