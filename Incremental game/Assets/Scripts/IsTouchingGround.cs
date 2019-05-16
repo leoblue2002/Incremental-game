@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -56,7 +57,13 @@ public class IsTouchingGround : MonoBehaviour
 
         }
     }
-        //this disconects the object from the ground
+
+    internal void SetIsConnectedToPlatform(bool v)
+    {
+        IsConnectedToPlatform = v;
+    }
+
+    //this disconects the object from the ground
     private void OnCollisionExit2D(Collision2D collision)
     {
         IsTouchingGround newthing = collision.gameObject.GetComponent<IsTouchingGround>();
@@ -104,6 +111,11 @@ public class IsTouchingGround : MonoBehaviour
             }
             WasMakingMoneyLastFrame = IsMakingMoney;
         }
+    }
+
+    public void SetIsConnectedToGround (bool input)
+    {
+        IsConnectedToGround = input;
     }
 
     public bool GetIsMakingMoney ()

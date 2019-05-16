@@ -11,6 +11,15 @@ public class GameSaver : MonoBehaviour
         GameObject[] Blocks = GameObject.FindGameObjectsWithTag("Block");
         GameObject[] Platforms = GameObject.FindGameObjectsWithTag("Platform");
 
-
     }
+}
+
+[System.Serializable]
+class SaveObject
+{
+    float x;
+    float y;
+    float z;
+    Quaternion rotation;
+
 }

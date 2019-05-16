@@ -57,6 +57,17 @@ public class Buttonsdostuff : MonoBehaviour
         }
     }
 
+    public void Disinfect ()
+    {
+        GameObject[] Blocks = GameObject.FindGameObjectsWithTag("Block");
+        for (int i = 0; i < Blocks.Length; i++)
+        {
+            //Blocks[i].GetComponent<IsTouchingGround>().SetIsConnectedToGround(false);
+            IsTouchingGround blockref = Blocks[i].GetComponent<IsTouchingGround>();
+            blockref.SetIsConnectedToGround(false);
+            blockref.SetIsConnectedToPlatform(false);
+        }
+    }
 
     public void CamraUpgrades ()
     {
