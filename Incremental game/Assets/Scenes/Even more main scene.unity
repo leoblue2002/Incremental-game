@@ -8298,6 +8298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9d961c2f3d8d4c71bda810e928fbb06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BlockPrefabs:
+  - {fileID: 3214657729960975832, guid: c6aa75f350f2a3141889df96b5355318, type: 3}
+  - {fileID: 2231216809323541757, guid: a3c2f7a9d9e654436893a3680c9e6444, type: 3}
+  - {fileID: 2060429601163142071, guid: b00c05945b4d14e5d94cdaccd2f3fbbb, type: 3}
+  - {fileID: 2156682296699255152, guid: 159a7ba3f64c040979cd7d1fe1728332, type: 3}
 --- !u!1 &2129882597
 GameObject:
   m_ObjectHideFlags: 0
