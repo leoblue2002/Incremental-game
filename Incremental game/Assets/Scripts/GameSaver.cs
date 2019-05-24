@@ -9,6 +9,7 @@ public class GameSaver : MonoBehaviour
 {
     moneymanager MMRef;
     public GameObject[] BlockPrefabs;
+    public GameObject[] PlatformPrefabs;
 
     private void Start()
     {
@@ -74,6 +75,8 @@ public class GameSaver : MonoBehaviour
                 Instantiate(BlockPrefabs[CBlock.level], BlockPos, quat);
             }
         }
+
+
     }
 
 }
@@ -138,4 +141,13 @@ class SaveMoneyInfo
     //    OwnedBoxes = InOwnedBoxes;
     //    CostOfNewPlatform = inCostOfnewPlatform;
     //}
+}
+
+[Serializable]
+class SavePlatform
+{
+    public float x;
+    public float y;
+    public float z;
+    public int level;
 }
