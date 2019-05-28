@@ -8,6 +8,7 @@ using System.IO;
 public class GameSaver : MonoBehaviour
 {
     moneymanager MMRef;
+    public GameObject WorldBoundries;
     public GameObject[] BlockPrefabs;
     public GameObject[] PlatformPrefabs;
 
@@ -23,6 +24,8 @@ public class GameSaver : MonoBehaviour
         BinaryFormatter bf = new BinaryFormatter();
         FileStream MoneyFile = File.Create(Application.persistentDataPath + "/MoneyInfo.dat");
         FileStream BlockFile = File.Create(Application.persistentDataPath + "/BlockInfo.dat");
+        FileStream PlatformFile = File.Create(Application.persistentDataPath + "/PlatformInfo.dat");
+        FileStream WorldFile = File.Create(Application.persistentDataPath + "/WorldInfo.dat");
 
         SaveMoneyInfo HitThatMFLike = new SaveMoneyInfo();
         HitThatMFLike.Money = MMRef.Money;
@@ -30,29 +33,38 @@ public class GameSaver : MonoBehaviour
         HitThatMFLike.CostOfNewPlatform = MMRef.CostOfNewPlatform;
         HitThatMFLike.OwnedBoxes = MMRef.OwnedBoxes;
 
-        SaveBlocks gravy = new SaveBlocks(Blocks);
+        SaveWorldInfo WorldInfo = new SaveWorldInfo();
+        WorldInfo.PosX = WorldBoundries.transform.position.x;
+        WorldInfo.TransX = WorldBoundries.transform.lossyScale.x;
+        WorldInfo.PlaySpaceWidth = WorldBoundries.transform.GetChild(2).GetComponent<ScreenEdgeWarp>().PlaySpaceWidth;
 
-        bf.Serialize(BlockFile, gravy);
+        bf.Serialize(WorldFile, WorldInfo);
+        bf.Serialize(PlatformFile, new SavePlatforms(Platforms));
+        bf.Serialize(BlockFile, new SaveBlocks(Blocks));
         bf.Serialize(MoneyFile, HitThatMFLike);
+
+        WorldFile.Close();
+        PlatformFile.Close();
         MoneyFile.Close();
         BlockFile.Close();
     }
 
     // 46:35 of the video, Live Training 3 mar 2014 - data persistene
 
-    public void LoadThatBitch ()
+    public void LoadThatBitch()
     {
         BinaryFormatter bf = new BinaryFormatter();
         if (File.Exists(Application.persistentDataPath + "/MoneyInfo.dat"))
         {
 
-            FileStream file = File.Open(Application.persistentDataPath + "/MoneyInfo.dat",FileMode.Open);
+            FileStream file = File.Open(Application.persistentDataPath + "/MoneyInfo.dat", FileMode.Open);
             SaveMoneyInfo HTMFL = (SaveMoneyInfo)bf.Deserialize(file);
             file.Close();
             MMRef.Money = HTMFL.Money;
             MMRef.CostOfBoxes = HTMFL.CostOfBoxes;
             MMRef.OwnedBoxes = HTMFL.OwnedBoxes;
             MMRef.CostOfNewPlatform = HTMFL.CostOfNewPlatform;
+            Array.Clear(MMRef.MakingMoneyBoxes, 0, MMRef.MakingMoneyBoxes.Length);
         }
 
         if (File.Exists(Application.persistentDataPath + "/BlockInfo.dat"))
@@ -76,9 +88,15 @@ public class GameSaver : MonoBehaviour
             }
         }
 
-
+        if (File.Exists(Application.persistentDataPath + "/WorldInfo.dat"))
+        {
+            FileStream WorldFile = File.Open(Application.persistentDataPath + "/BlockInfo.dat", FileMode.Open);
+            SaveWorldInfo jeff = (SaveWorldInfo)bf.Deserialize(WorldFile);
+            WorldFile.Close();
+            WorldBoundries.transform.position = new Vector3(jeff.PosX, 0, 0);
+            WorldBoundries.transform.localScale = new Vector3(jeff.TransX, 1, 1);
+        }
     }
-
 }
 
 [Serializable]
@@ -144,10 +162,36 @@ class SaveMoneyInfo
 }
 
 [Serializable]
+class SaveWorldInfo
+{
+    public float PosX;
+    public float TransX;
+    public float PlaySpaceWidth;
+}
+
+[Serializable]
 class SavePlatform
 {
     public float x;
-    public float y;
-    public float z;
     public int level;
+    public SavePlatform (float x,int level)
+    {
+        this.x = x;
+        this.level = level;
+    }
+}
+
+[Serializable]
+class SavePlatforms
+{
+    public SavePlatform[] platforms;
+    public SavePlatforms (GameObject[] inplatforms)
+    {
+        platforms = new SavePlatform[inplatforms.Length];
+        for (int i = 0; i < inplatforms.Length; i++)
+        {
+            GameObject jeff = inplatforms[i];
+            platforms[i] = new SavePlatform(jeff.transform.position.x, jeff.GetComponent<PlatformUpgrader>().currentlevel); //mabey - 1?
+        }
+    }
 }
